@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block left %}
+
+     <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="">首页</a>/数据列表</h3>
+                </div>
+                <div class="panel-body">
+                    <button class="btn btn-primary addBtn"><a href="/add_questionAnire/"></a>添加</button>
+
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>调查问卷名称</th>
+                            <th>调查问卷班级</th>
+                            <th>参与人数</th>
+                            <th>问卷选项</th>
+                            <th>调查地址</th>
+                            <th>查看评分</th>
+                            <th>操作</th>
+                        </tr>
+
+                        {% for foo in obj %}
+                            <tr>
+                                <td>{{ foo.title }}</td>
+                                <td>{{ foo.group.title }}</td>
+                                <td>/{{ foo.group.stu_num }}</td>
+                                <td><a href="/edit_questionAnire2/{{ foo.id }}">编辑问卷</a></td>
+                                <td><a href="">调查地址</a></td>
+                                <td><a href="">查看评分</a></td>
+                                <td><a href="">删除</a></td>
+                        </tr>
+
+                        {% endfor %}
+
+
+
+
+                    </table>
+                </div>
+            </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+
+{% block left %}
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><a href="/index/">首页</a>/<a href="/questionAnire/">问卷调查</a>/编辑问卷调查</h3>
+            </div>
+            <div class="panel-body add_option">
+
+                <a><button class="btn btn-primary add_btn">增加</button></a>
+                <button class="btn btn-success btn_save">保存</button>
+
+                    <ol class="list-group">
+                        {% for item in form_list %}
+                            <li class="list-group-item">
+                            <a class="x">X</a>
+                                <div id="{{ item.question.id }}">
+                                    问题: {{ item.form.title }}
+                                </div>
+                                <p>问题类型:{{ item.form.question_choice }}
+                                    <a class="{{ item.is_hide }} add_choice">添加选项</a>
+                                </p>
+                                <ul class="{{ item.is_hide }}">
+                                    {% for v in item.option %}
+                                        <li id="{{ v.obj.id }}">{{ v.option_form }} <a class="innerX">X</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endfor %}
+
+                    </ol>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
